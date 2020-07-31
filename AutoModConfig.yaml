@@ -69,6 +69,7 @@ modmail: "The above item mentioned the moderators."
 # 10 #Solved Comment for help post
     type: comment
     body: ["!solved"]
+    is_top_level: true
     author:
         is_submitter: true
     parent_submission:

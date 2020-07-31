@@ -1,0 +1,146 @@
+###Mod Assist
+---
+# Automatically remove anything that gets 3+ reports and send modmail
+    reports: 3
+    action: remove
+    comment: "Your {{kind}} has been removed because multiple users has reported it to the moderation team. This action is done automatically by a bot."
+    modmail: "The above {{kind}} by /u/{{author}} was automatically removed due to receiving 3+ reports. [Please investigate]({{permalink}})."
+ 
+---
+# Automatically notifies via modmail of 2 reports
+    reports: 2
+    modmail: "The above {{kind}} by /u/{{author}} has received 2 reports. [Please investigate]({{permalink}})."
+ 
+---
+# Auto approved domains/links -Github
+    domain: [github.com]
+    action: approve
+ 
+# Mod-Message reports items that could potentially relate to moderators.
+---
+title+body: ["moderator", "moderators", "mods", "mod","{{subreddit}}","r/{{subreddit}}"]
+modmail: "The above item mentioned the moderators."
+
+###Help Assist
+---
+# Post Logs
+    type: comment
+    body: ["!Logging"]
+    comment: " Hi. OP please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}."
+
+---
+# Post Logs
+    type: comment
+    body: ["!DownloadImp"]
+    comment: " Hi. OP please review the following link. [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}."
+ 
+###Post Auto Replies
+---
+# Docker Comment
+    type: submission
+    Title+body: "docker"
+    Comment: "You've mentioned Docker, be sure to [generate a docker-compose](https://old.reddit.com/r/usenet/wiki/docker#wiki_get_docker-compose) of all your docker images in a pastebin and link to it. Most Docker issues can be solved by understanding the wiki article for [these automation software and Docker](https://old.reddit.com/r/usenet/wiki/docker), which is all about user, group, ownership, permissions and paths."
+ 
+---
+# Check if help post has logs
+    type: submission
+    flair_text: "unsolved"
+    ~body (includes): ["pastebin"]
+    # Original includes [log, logs, pastebin]
+    comment: "It appears you are requesting assistance and did not provide any linked logs.  Please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}."
+    moderators_exempt: false
+ 
+---
+# Help Flair "Solved" Comment Instructions
+    type: submission
+    flair_text: "unsolved"
+    comment: "Hi /u/{{author}} once your problem is solved, please reply to the answer(s) saying '!solved' in the thread."
+    moderators_exempt: false
+    comment_locked: true
+    comment_stickied: true
+ 
+---
+# Solved Comment for help post
+    type: comment
+    body: ["!solved"]
+    author:
+        is_submitter: true
+    parent_submission:
+        flair_text: ["solved"]
+        overwrite_flair: true
+### Posts Control
+ 
+# Moderator Posts
+---
+    title (regex): ["mod(erator)?([ -]?post)?s?", "announcements?", "admin(istrator)?s?"]
+    action: remove
+    comment: |
+        Your post has been automatically removed because you used a keyword which is reserved for the subreddit moderators.
+    modmail: |
+        The above post by /u/{{author}}, with title "{{title}}" was removed because it contained a moderator-only keyword.
+ 
+        Please investigate and make sure that this action was correct.
+ 
+# Image Direct Links
+---
+    domain: [gyazo.com, puu.sh, prntscr.com, postimg.org, pinterest.com, imageshack.us]
+    ~url (ends-with): [.png, .jpg, .gif, .jpeg]
+    comment: |
+        Your submission has been automatically removed due to an indirect link to a hosted image.
+ 
+        Please be considerate of mobile and RES users, and resubmit your link with the proper file extension.
+ 
+        For your convenience, here is your submitted link with a .png file extension appended to the end. Please check that it works. If it does, retry your submission with this link:
+ 
+        {{url}}.png
+ 
+        If the above link does not work, right-click on your image, select *Copy Image URL*, and paste that into the reddit submission page instead.
+ 
+    action: remove
+
+---
+    domain: [imgur.com]
+    url (regex): ["imgur\\.com/[A-Za-z0-9]{5,8}$"]
+    comment: |
+        Your submission has been automatically removed due to an indirect link to a hosted image.
+ 
+        Please be considerate of mobile and RES users, and resubmit your post as a direct link.
+ 
+         For your convenience, here is your submitted link with .jpg and .gif file extensions appended to the end. Please see if one works, and re-try your submission with one of the following links:
+ 
+        * {{url}}.jpg
+        * {{url}}.gif
+ 
+        If the above links do not work, right-click on your image, select *Copy Image URL*, and paste that into the reddit submission page.
+ 
+    action: remove
+
+---
+    domain: [imgur.com]
+    url (regex): ["imgur\\.com/[A-Za-z0-9]{5,8},([A-Za-z0-9]{5,8},?)+", "gallery"]
+    action: remove
+    comment: |
+        Your submission has been automatically removed due to an indirect link to a hosted image.
+ 
+        Non-album multi-image links and imgur gallery links are not compatible with RES and mobile apps.
+ 
+        For multi-image links, please create an album and submit a link to that.
+ 
+        For gallery images, please right-click your image, choose *Copy Image URL*, and submit that direct image link to reddit.
+
+---
+    domain: [pinterest.com, snag.gy, uput.in, imgflip.com]
+    ~url: [i.snag.gy, i.uput.in, i.imgflip.com]
+    action: remove
+    comment: |
+        Your submission has been automatically removed due to an indirect link to a hosted image.
+ 
+        Please right-click your image, choose *Copy Image URL*, and submit that direct image link to reddit.
+
+---
+    domain: [tinypic.com]
+    action: remove
+    comment: |
+        Your submission has been automatically removed due to an indirect link to a hosted image.
+ 
+        Unfortunately, the media host {{domain}} is not compatible with mobile apps and/or RES. Please be considerate of mobile and RES users and resubmit your content using a different media host.

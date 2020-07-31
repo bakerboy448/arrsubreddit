@@ -41,29 +41,29 @@ modmail: "The above item mentioned the moderators."
     Title+body: "docker"
     Comment: "You've mentioned Docker, be sure to [generate a docker-compose](https://old.reddit.com/r/usenet/wiki/docker#wiki_get_docker-compose) of all your docker images in a pastebin and link to it. Most Docker issues can be solved by understanding the wiki article for [these automation software and Docker](https://old.reddit.com/r/usenet/wiki/docker), which is all about user, group, ownership, permissions and paths."
  
---- 
-# Check if help post has logs 
-   type: submission 
-   flair_text: "unsolved" 
-   body (includes): ["pastebin"] 
-   # Original includes [log, logs, pastebin] 
-   comment: |
-     It appears you are requesting assistance and did not provide any linked logs.  Please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
-
-     Also, once your problem is solved, please reply to the answer(s) saying '!solved' in the thread.
-   moderators_exempt: false
-   comment_locked: true 
-   comment_stickied: true
---- 
-# Help Flair "Solved" Comment Instructions 
-   type: submission 
-   flair_text: "unsolved" 
-   ~body (includes): ["pastebin"]
-   comment: "Hi /u/{{author}} once your problem is solved, please reply to the answer(s) saying '!solved' in the thread." 
-   moderators_exempt: false 
-   comment_locked: true 
-   comment_stickied: true 
 ---
+# Check if help post has logs
+    type: submission
+    flair_text: "unsolved"
+    ~body (includes): ["pastebin"]
+    # Original includes [log, logs, pastebin]
+    comment: | 
+    It appears you are requesting assistance and did not provide any linked logs.  Please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
+    
+    Also, once your problem is solved, please reply to the answer(s) saying '!solved' in the thread.
+    moderators_exempt: false
+    comment_locked: true
+    comment_stickied: true
+ 
+---
+# Help Flair "Solved" Comment Instructions
+    type: submission
+    flair_text: "unsolved"
+    body (includes): ["pastebin"]
+    comment: "Hi /u/{{author}} once your problem is solved, please reply to the answer(s) saying '!solved' in the thread."
+    moderators_exempt: false
+    comment_locked: true
+    comment_stickied: true
  
 ---
 # Solved Comment for help post

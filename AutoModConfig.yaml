@@ -58,12 +58,17 @@ modmail: "The above item mentioned the moderators."
 ---
 # 9 #Help Flair "Solved" Comment Instructions
     type: submission
-    flair_text: "unsolved"
+    set_flair:
+        ["unsolved","5189e338-6761-11e9-bf5a-0ecd7f396b08"]
+        template_id: 5189e338-6761-11e9-bf5a-0ecd7f396b08 
     body (includes): ["pastebin"]
     comment: "Hi /u/{{author}} once your problem is solved, please reply to the answer(s) saying '!solved' in the thread."
     moderators_exempt: false
     comment_locked: true
     comment_stickied: true
+           
+
+---
  
 ---
 # 10 #Solved Comment for help post
@@ -157,9 +162,4 @@ modmail: "The above item mentioned the moderators."
         Unfortunately, the media host {{domain}} is not compatible with mobile apps and/or RES. Please be considerate of mobile and RES users and resubmit your content using a different media host.
 ---
 
-#17 Set all new posts to unsolved flair
-type: submission
-set_flair: 
-    ["unsolved","5189e338-6761-11e9-bf5a-0ecd7f396b08"]
-    template_id: 5189e338-6761-11e9-bf5a-0ecd7f396b08        
----
+

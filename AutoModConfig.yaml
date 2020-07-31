@@ -155,3 +155,11 @@ modmail: "The above item mentioned the moderators."
         Your submission has been automatically removed due to an indirect link to a hosted image.
  
         Unfortunately, the media host {{domain}} is not compatible with mobile apps and/or RES. Please be considerate of mobile and RES users and resubmit your content using a different media host.
+---
+
+Set all new posts to unsolved flair
+type: submission
+set_flair: 
+    ["unsolved","5189e338-6761-11e9-bf5a-0ecd7f396b08"]
+    template_id: 5189e338-6761-11e9-bf5a-0ecd7f396b08        
+---

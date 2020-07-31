@@ -1,48 +1,48 @@
 ###Mod Assist
 ---
-# Automatically remove anything that gets 3+ reports and send modmail
+# 1 #Automatically remove anything that gets 3+ reports and send modmail
     reports: 3
     action: remove
     comment: "Your {{kind}} has been removed because multiple users has reported it to the moderation team. This action is done automatically by a bot."
     modmail: "The above {{kind}} by /u/{{author}} was automatically removed due to receiving 3+ reports. [Please investigate]({{permalink}})."
  
 ---
-# Automatically notifies via modmail of 2 reports
+# 2 #Automatically notifies via modmail of 2 reports
     reports: 2
     modmail: "The above {{kind}} by /u/{{author}} has received 2 reports. [Please investigate]({{permalink}})."
  
 ---
-# Auto approved domains/links -Github
+# 3 #Auto approved domains/links -Github
     domain: [github.com]
     action: approve
  
-# Mod-Message reports items that could potentially relate to moderators.
+# 4 #Mod-Message reports items that could potentially relate to moderators.
 ---
 title+body: ["moderator", "moderators", "mods", "mod","{{subreddit}}","r/{{subreddit}}"]
 modmail: "The above item mentioned the moderators."
 
 ###Help Assist
 ---
-# Post Logs
+# 5 #Post Logs
     type: comment
     body: ["!Logging"]
     comment: " Hi. OP please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}."
 
 ---
-# Post Logs
+# 6 #Post Logs
     type: comment
     body: ["!DownloadImp"]
     comment: " Hi. OP please review the following link. [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}."
  
 ###Post Auto Replies
 ---
-# Docker Comment
+# 7 #Docker Comment
     type: submission
     Title+body: "docker"
     Comment: "You've mentioned Docker, be sure to [generate a docker-compose](https://old.reddit.com/r/usenet/wiki/docker#wiki_get_docker-compose) of all your docker images in a pastebin and link to it. Most Docker issues can be solved by understanding the wiki article for [these automation software and Docker](https://old.reddit.com/r/usenet/wiki/docker), which is all about user, group, ownership, permissions and paths."
  
 ---
-# Check if help post has logs
+# 8 #Check if help post has logs
     type: submission
     flair_text: "unsolved"
     ~body (includes): ["pastebin"]
@@ -56,7 +56,7 @@ modmail: "The above item mentioned the moderators."
     comment_stickied: true
  
 ---
-# Help Flair "Solved" Comment Instructions
+# 9 #Help Flair "Solved" Comment Instructions
     type: submission
     flair_text: "unsolved"
     body (includes): ["pastebin"]
@@ -66,7 +66,7 @@ modmail: "The above item mentioned the moderators."
     comment_stickied: true
  
 ---
-# Solved Comment for help post
+# 10 #Solved Comment for help post
     type: comment
     body: ["!solved"]
     author:
@@ -76,7 +76,7 @@ modmail: "The above item mentioned the moderators."
         overwrite_flair: true
 ### Posts Control
  
-# Moderator Posts
+# 11 #Moderator Posts
 ---
     title (regex): ["mod(erator)?([ -]?post)?s?", "announcements?", "admin(istrator)?s?"]
     action: remove
@@ -89,6 +89,7 @@ modmail: "The above item mentioned the moderators."
  
 # Image Direct Links
 ---
+# 12 #
     domain: [gyazo.com, puu.sh, prntscr.com, postimg.org, pinterest.com, imageshack.us]
     ~url (ends-with): [.png, .jpg, .gif, .jpeg]
     comment: |
@@ -105,6 +106,7 @@ modmail: "The above item mentioned the moderators."
     action: remove
 
 ---
+# 13 #
     domain: [imgur.com]
     url (regex): ["imgur\\.com/[A-Za-z0-9]{5,8}$"]
     comment: |
@@ -122,6 +124,7 @@ modmail: "The above item mentioned the moderators."
     action: remove
 
 ---
+# 14 #
     domain: [imgur.com]
     url (regex): ["imgur\\.com/[A-Za-z0-9]{5,8},([A-Za-z0-9]{5,8},?)+", "gallery"]
     action: remove
@@ -135,6 +138,7 @@ modmail: "The above item mentioned the moderators."
         For gallery images, please right-click your image, choose *Copy Image URL*, and submit that direct image link to reddit.
 
 ---
+# 15 #
     domain: [pinterest.com, snag.gy, uput.in, imgflip.com]
     ~url: [i.snag.gy, i.uput.in, i.imgflip.com]
     action: remove
@@ -144,6 +148,7 @@ modmail: "The above item mentioned the moderators."
         Please right-click your image, choose *Copy Image URL*, and submit that direct image link to reddit.
 
 ---
+# 16 #
     domain: [tinypic.com]
     action: remove
     comment: |

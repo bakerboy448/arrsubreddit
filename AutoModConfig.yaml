@@ -56,29 +56,39 @@ modmail: "The above item mentioned the moderators."
     comment_stickied: true
  
 ---
-# 9 #Help Flair "Solved" Comment Instructions
-    type: submission
-    flair_text: "unsolved"
-    body (includes): ["pastebin"]
-    comment: "Hi /u/{{author}} once your problem is solved, please reply to the answer(s) saying '!solved' in the thread."
-    moderators_exempt: false
-    comment_locked: true
-    comment_stickied: true
- 
+# 9 #automatic set flair to unsolved if no flair is detected
+type: submission
+~flair_text (regex): ".+"
+set_flair:
+  template_id: e164b166-d373-11ea-ad55-0e35d0a576f3
+comment: |
+  Hi /u/{{author}} we weren't quite sure what type of post you were looking to make since you did not select a flair type.
+
+  We went ahead and placed your post as an unsolved question. If this is not the case please make changes to correct this.
+
+  If you are requesting assistance and did not provide any linked logs.  Please review the following link. [Gathering Logs] (https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
+
+  Once your problem is solved, please reply to the answer(s) saying '!solved' in the thread.  
+
+moderators_exempt: false
+comment_locked: true
+comment_stickied: true
 ---
+
 # 10 #Solved Comment for help post
-    type: comment
-    body: ["!solved"]
-    is_top_level: true
-    author:
-        is_submitter: true
-    parent_submission:
-        flair_text: ["solved"]
-        overwrite_flair: true
+type: comment
+body: ["!solved"]
+author:
+  is_submitter: true
+parent_submission:
+  set_flair:
+    template_id: 16d2d504-d378-11ea-a0ae-0e7365d88ae9
+  overwrite_flair: true
+comment: "Thank you/u/{{author}} we hope that if you have any further issues you'll come back and ask away."
+---
 ### Posts Control
  
 # 11 #Moderator Posts
----
     title (regex): ["mod(erator)?([ -]?post)?s?", "announcements?", "admin(istrator)?s?"]
     action: remove
     comment: |

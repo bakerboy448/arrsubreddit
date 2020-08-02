@@ -81,6 +81,7 @@ body: ["!solved"]
 author:
   is_submitter: true
 parent_submission:
+  flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3
   set_flair:
     template_id: 16d2d504-d378-11ea-a0ae-0e7365d88ae9
   overwrite_flair: true

@@ -1,9 +1,8 @@
 ###Mod Assist
----
 # 1 #Automatically remove anything that gets 3+ reports and send modmail
     reports: 3
     action: remove
-    comment: "Your {{kind}} has been removed because multiple users has reported it to the moderation team. This action is done automatically by a bot."
+    comment: "Your {{kind}} has been removed because multiple users has reported it to the moderation team. This action is done automatically by a bot. The moderators will review this action."
     modmail: "The above {{kind}} by /u/{{author}} was automatically removed due to receiving 3+ reports. [Please investigate]({{permalink}})."
  
 ---
@@ -18,69 +17,93 @@
  
 # 4 #Mod-Message reports items that could potentially relate to moderators.
 ---
-title+body: ["moderator", "moderators", "mods", "mod","{{subreddit}}","r/{{subreddit}}"]
-modmail: "The above item mentioned the moderators."
+    type: any
+    title+body: ["moderator", "moderators", "mods", "mod","{{subreddit}}","r/{{subreddit}}"]
+    modmail: "The [item]({{permalink}}) mentioned the moderators."
 
 ###Help Assist
 ---
 # 5 #Post Logs
     type: comment
-    body: ["!Logging"]
-    comment: " Hi. OP please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}."
+    body (full-exact): ["!Logs","!Logging"]
+    comment: |
+        Hi. OP please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
 
 ---
-# 6 #Post Logs
+# 6 #Post Download
     type: comment
-    body: ["!DownloadImp"]
-    comment: " Hi. OP please review the following link. [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}."
+    body (full-exact): ["!Download","!DownloadImp"]
+    comment: |
+        Hi. OP please review the following link: [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}.
  
-###Post Auto Replies
 ---
+###Post Auto Replies
 # 7 #Docker Comment
     type: submission
     Title+body: "docker"
-    Comment: "You've mentioned Docker, be sure to [generate a docker-compose](https://old.reddit.com/r/usenet/wiki/docker#wiki_get_docker-compose) of all your docker images in a pastebin and link to it. Most Docker issues can be solved by understanding the wiki article for [these automation software and Docker](https://old.reddit.com/r/usenet/wiki/docker), which is all about user, group, ownership, permissions and paths."
+    Comment: |
+        You've mentioned Docker, be sure to [generate a docker-compose](https://old.reddit.com/r/usenet/wiki/docker#wiki_get_docker-compose) of all your docker images in a pastebin and link to it. Most Docker issues can be solved by understanding the wiki article for [these automation software and Docker](https://old.reddit.com/r/usenet/wiki/docker), which is all about user, group, ownership, permissions and paths.
  
+---
+# 7.5 #Auto reply if "Downloads, Downloading, Download" is in the body or the title
+type: submission
+Title+body: ["Downloads", "Downloading", "Download"]
+comment: | 
+    Hi. OP! It appears that you may be having issues with some aspect of downloading please review the following link. [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}.
+
 ---
 # 8 #Check if help post has logs
     type: submission
-    flair_text: "unsolved"
+    flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
     ~body (includes): ["pastebin"]
-    # Original includes [log, logs, pastebin]
     Comment: |
-        It appears you are requesting assistance and did not provide any linked logs.  Please review the following link. [Gathering Logs] (https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
-    
-        Also, once your problem is solved, please reply to the answer(s) saying '!solved' in the thread.
+        It appears you are requesting assistance and did not provide any linked logs.  Please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
+        If you did include the logs directly in your post, please edit your post to remove them and provide the logs via a [pastebin link](pastebin.com) or similar site.
+        
+        Once your problem is solved, please reply to the answer(s) saying '!solved' in the thread.
     moderators_exempt: false
     comment_locked: true
     comment_stickied: true
  
 ---
-# 9 #Help Flair "Solved" Comment Instructions
-    type: submission
-    flair_text: "unsolved"
-    body (includes): ["pastebin"]
-    comment: "Hi /u/{{author}} once your problem is solved, please reply to the answer(s) saying '!solved' in the thread."
-    moderators_exempt: false
-    comment_locked: true
-    comment_stickied: true
- 
+# 9 #automatic set flair to unsolved if no flair is detected
+type: submission
+~flair_text (regex): ".+"
+set_flair:
+  template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
+comment: |
+  Hi /u/{{author}} we weren't quite sure what type of post you were looking to make since you did not select a flair type.
+
+  We went ahead and placed your post as an unsolved question. If this is not the case please make changes to correct this.
+
+  If you are requesting assistance and did not provide any linked logs.  Please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
+
+  Once your problem is solved, please reply to the answer(s) saying '!solved' in the thread.  
+
+moderators_exempt: false
+comment_locked: true
+comment_stickied: true
 ---
+
 # 10 #Solved Comment for help post
-    type: comment
-    body: ["!solved"]
-    is_top_level: true
-    author:
-        is_submitter: true
-    parent_submission:
-        flair_text: ["solved"]
-        overwrite_flair: true
+type: comment
+body: ["!solved"]
+author:
+  is_submitter: true
+parent_submission:
+  flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
+  set_flair:
+    template_id: 16d2d504-d378-11ea-a0ae-0e7365d88ae9 #arrmodtest solved
+  overwrite_flair: true
+comment: "Thank you/u/{{author}} I've gone ahead and marked your post as solved."
+moderators_exempt: false
+---
 ### Posts Control
  
 # 11 #Moderator Posts
----
     title (regex): ["mod(erator)?([ -]?post)?s?", "announcements?", "admin(istrator)?s?"]
     action: remove
+    action_reason: "Special Mod Words"
     comment: |
         Your post has been automatically removed because you used a keyword which is reserved for the subreddit moderators.
     modmail: |
@@ -105,6 +128,7 @@ modmail: "The above item mentioned the moderators."
         If the above link does not work, right-click on your image, select *Copy Image URL*, and paste that into the reddit submission page instead.
  
     action: remove
+    action_reason: "Indirect Images"
 
 ---
 # 13 #
@@ -123,12 +147,14 @@ modmail: "The above item mentioned the moderators."
         If the above links do not work, right-click on your image, select *Copy Image URL*, and paste that into the reddit submission page.
  
     action: remove
+    action_reason: "Indirect Images"
 
 ---
 # 14 #
     domain: [imgur.com]
     url (regex): ["imgur\\.com/[A-Za-z0-9]{5,8},([A-Za-z0-9]{5,8},?)+", "gallery"]
     action: remove
+    action_reason: "Indirect Images"
     comment: |
         Your submission has been automatically removed due to an indirect link to a hosted image.
  
@@ -143,6 +169,7 @@ modmail: "The above item mentioned the moderators."
     domain: [pinterest.com, snag.gy, uput.in, imgflip.com]
     ~url: [i.snag.gy, i.uput.in, i.imgflip.com]
     action: remove
+    action_reason: "Indirect Images"
     comment: |
         Your submission has been automatically removed due to an indirect link to a hosted image.
  
@@ -152,6 +179,7 @@ modmail: "The above item mentioned the moderators."
 # 16 #
     domain: [tinypic.com]
     action: remove
+    action_reason: "Indirect Images"
     comment: |
         Your submission has been automatically removed due to an indirect link to a hosted image.
  

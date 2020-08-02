@@ -3,7 +3,7 @@
 # 1 #Automatically remove anything that gets 3+ reports and send modmail
     reports: 3
     action: remove
-    comment: "Your {{kind}} has been removed because multiple users has reported it to the moderation team. This action is done automatically by a bot."
+    comment: "Your {{kind}} has been removed because multiple users has reported it to the moderation team. This action is done automatically by a bot. The moderators will review this action."
     modmail: "The above {{kind}} by /u/{{author}} was automatically removed due to receiving 3+ reports. [Please investigate]({{permalink}})."
  
 ---
@@ -27,39 +27,42 @@
 # 5 #Post Logs
     type: comment
     body: ["!Logs"|"!Logging"]
-    comment: " Hi. OP please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}."
+    comment: |
+        Hi. OP please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
 
 ---
 # 6 #Post Download
     type: comment
     body: ["!Download|"!DownloadImp"]
-    comment: " Hi. OP please review the following link: [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}."
+    comment: |
+        Hi. OP please review the following link: [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}.
  
 ---
-
 ###Post Auto Replies
 # 7 #Docker Comment
     type: submission
     Title+body: "docker"
-    Comment: "You've mentioned Docker, be sure to [generate a docker-compose](https://old.reddit.com/r/usenet/wiki/docker#wiki_get_docker-compose) of all your docker images in a pastebin and link to it. Most Docker issues can be solved by understanding the wiki article for [these automation software and Docker](https://old.reddit.com/r/usenet/wiki/docker), which is all about user, group, ownership, permissions and paths."
+    Comment: |
+        You've mentioned Docker, be sure to [generate a docker-compose](https://old.reddit.com/r/usenet/wiki/docker#wiki_get_docker-compose) of all your docker images in a pastebin and link to it. Most Docker issues can be solved by understanding the wiki article for [these automation software and Docker](https://old.reddit.com/r/usenet/wiki/docker), which is all about user, group, ownership, permissions and paths.
  
 ---
 # 7.5 #Auto reply if "Downloads, Downloading, Download" is in the body or the title
 type: submission
 Title+body: ["Downloads", "Downloading", "Download"]
 comment: | 
-    Hi. OP! It appears that you're having issues with some aspect of downloading please review the following link. [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}.
+    Hi. OP! It appears that you may be having issues with some aspect of downloading please review the following link. [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}.
 
 ---
 # 8 #Check if help post has logs
     type: submission
     parent_submission:
-        flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #unsolved arrmodtest
+        flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
     ~body (includes): ["pastebin"]
     # Original includes [log, logs, pastebin]
     Comment: |
-        It appears you are requesting assistance and did not provide any linked logs.  Please review the following link. [Gathering Logs (https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
-    
+        It appears you are requesting assistance and did not provide any linked logs.  Please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
+        If you did include the logs directly in your post, please edit your post to remove them and provide the logs via a [pastebin link](pastebin.com) or similar site.
+        
         Once your problem is solved, please reply to the answer(s) saying '!solved' in the thread.
     moderators_exempt: false
     comment_locked: true
@@ -70,13 +73,13 @@ comment: |
 type: submission
 ~flair_text (regex): ".+"
 set_flair:
-  template_id: e164b166-d373-11ea-ad55-0e35d0a576f3
+  template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
 comment: |
   Hi /u/{{author}} we weren't quite sure what type of post you were looking to make since you did not select a flair type.
 
   We went ahead and placed your post as an unsolved question. If this is not the case please make changes to correct this.
 
-  If you are requesting assistance and did not provide any linked logs.  Please review the following link. [Gathering Logs] (https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
+  If you are requesting assistance and did not provide any linked logs.  Please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
 
   Once your problem is solved, please reply to the answer(s) saying '!solved' in the thread.  
 
@@ -91,11 +94,12 @@ body: ["!solved"]
 author:
   is_submitter: true
 parent_submission:
-  flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3
+  flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
   set_flair:
-    template_id: 16d2d504-d378-11ea-a0ae-0e7365d88ae9
+    template_id: 16d2d504-d378-11ea-a0ae-0e7365d88ae9 #arrmodtest solved
   overwrite_flair: true
 comment: "Thank you/u/{{author}} I've gone ahead and marked your post as solved."
+moderators_exempt: false
 ---
 ### Posts Control
  

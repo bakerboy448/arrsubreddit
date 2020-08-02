@@ -1,5 +1,4 @@
 ###Mod Assist
----
 # 1 #Automatically remove anything that gets 3+ reports and send modmail
     reports: 3
     action: remove
@@ -26,14 +25,14 @@
 ---
 # 5 #Post Logs
     type: comment
-    body: ["!Logs"|"!Logging"]
+    body (full-exact): ["!Logs","!Logging"]
     comment: |
         Hi. OP please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
 
 ---
 # 6 #Post Download
     type: comment
-    body: ["!Download|"!DownloadImp"]
+    body (full-exact): ["!Download","!DownloadImp"]
     comment: |
         Hi. OP please review the following link: [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}.
  
@@ -55,10 +54,8 @@ comment: |
 ---
 # 8 #Check if help post has logs
     type: submission
-    parent_submission:
-        flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
+    flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
     ~body (includes): ["pastebin"]
-    # Original includes [log, logs, pastebin]
     Comment: |
         It appears you are requesting assistance and did not provide any linked logs.  Please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
         If you did include the logs directly in your post, please edit your post to remove them and provide the logs via a [pastebin link](pastebin.com) or similar site.

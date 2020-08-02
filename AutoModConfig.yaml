@@ -55,6 +55,11 @@ comment: |
 # 8 #Check if help post has logs
     type: submission
     flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
+    flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrtest unsolved
+    flair_template_id: 10fa17be-d224-11ea-ae8c-0e9f7c8cd055 #lidarr unsolved
+    flair_template_id: 5189e338-6761-11e9-bf5a-0ecd7f396b08 #readarr unsolved
+    flair_template_id: 602b8658-d21d-11ea-b3e4-0ee6a8b990e7 #sonarr unsolved
+    flair_template_id: 245a69ae-d1bf-11ea-bfe5-0ec196655117 #radarr unsolved
     ~body (includes): ["pastebin"]
     Comment: |
         It appears you are requesting assistance and did not provide any linked logs.  Please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
@@ -70,7 +75,12 @@ comment: |
 type: submission
 ~flair_text (regex): ".+"
 set_flair:
-  template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
+    flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
+    flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrtest unsolved
+    flair_template_id: 10fa17be-d224-11ea-ae8c-0e9f7c8cd055 #lidarr unsolved
+    flair_template_id: 5189e338-6761-11e9-bf5a-0ecd7f396b08 #readarr unsolved
+    flair_template_id: 602b8658-d21d-11ea-b3e4-0ee6a8b990e7 #sonarr unsolved
+    flair_template_id: 245a69ae-d1bf-11ea-bfe5-0ec196655117 #radarr unsolved
 comment: |
   Hi /u/{{author}} we weren't quite sure what type of post you were looking to make since you did not select a flair type.
 
@@ -91,9 +101,18 @@ body: ["!solved"]
 author:
   is_submitter: true
 parent_submission:
-  flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
+    flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
+    flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrtest unsolved
+    flair_template_id: 10fa17be-d224-11ea-ae8c-0e9f7c8cd055 #lidarr unsolved
+    flair_template_id: 5189e338-6761-11e9-bf5a-0ecd7f396b08 #readarr unsolved
+    flair_template_id: 602b8658-d21d-11ea-b3e4-0ee6a8b990e7 #sonarr unsolved
+    flair_template_id: 245a69ae-d1bf-11ea-bfe5-0ec196655117 #radarr unsolved
   set_flair:
-    template_id: 16d2d504-d378-11ea-a0ae-0e7365d88ae9 #arrmodtest solved
+    flair_template_id: 16d2d504-d378-11ea-a0ae-0e7365d88ae9 #arrtest solved
+    flair_template_id: 05ee0a10-d224-11ea-a771-0eab20f8a02f #lidarr solved
+    flair_template_id: 328cdbfe-d211-11ea-aa97-0e384ca82067 #readarr solved
+    flair_template_id: 3ed6a744-d21d-11ea-b58f-0ed8dc567eeb #sonarr solved
+    flair_template_id: 72ec283a-dc3d-11e6-8918-0e7be260da34 #radarr solved
   overwrite_flair: true
 comment: "Thank you/u/{{author}} I've gone ahead and marked your post as solved."
 moderators_exempt: false

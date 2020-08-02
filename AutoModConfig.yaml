@@ -34,17 +34,25 @@ modmail: "The above item mentioned the moderators."
     body: ["!DownloadImp"]
     comment: " Hi. OP please review the following link. [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}."
  
-###Post Auto Replies
 ---
+
+###Post Auto Replies
 # 7 #Docker Comment
     type: submission
     Title+body: "docker"
     Comment: "You've mentioned Docker, be sure to [generate a docker-compose](https://old.reddit.com/r/usenet/wiki/docker#wiki_get_docker-compose) of all your docker images in a pastebin and link to it. Most Docker issues can be solved by understanding the wiki article for [these automation software and Docker](https://old.reddit.com/r/usenet/wiki/docker), which is all about user, group, ownership, permissions and paths."
  
 ---
+# 7.5 #Auto reply if "Downloads, Downloading, Download" is in the body or the title
+type: submission
+Title+body: ["Download", "Downloading", "Download"]
+comment: " Hi. OP! It appears that you're having issues w/ some aspect of downloading please review the following link. [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}."
+
+---
 # 8 #Check if help post has logs
     type: submission
-    flair_text: "unsolved"
+    parent_submission:
+      flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3
     ~body (includes): ["pastebin"]
     # Original includes [log, logs, pastebin]
     Comment: |

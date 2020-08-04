@@ -48,9 +48,9 @@
 
 # 7.5 #Auto reply if "Downloads, Downloading, Download" is in the body or the title
 type: submission
-Title+body: ["Downloads", "Downloading", "Download"]
+Title+body: ["Downloads", "Downloading", "Download", "import", "imported", "importing", "imports"]
 comment: | 
-    Hi. OP! It appears that you may be having issues with some aspect of downloading please review the following link. [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}.
+    Hi. OP! It appears that you may be having issues with some aspect of downloading or importing please review the following link. [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}.
 ---
 
 # 8 #Check if help post has logs
@@ -74,11 +74,14 @@ comment: |
 #8.5 #check to see if logs are not posted to pastebin
   type: submission
   body (includes): ["trace","info","warn"]
-  action: remove
+  action: filter #filter to mod queue
   action_reason: "Post includes log but not posted to pastebin"
   message_subject: "Post includes log but not posted to pastebin"
   message: |
-      Your post has been automatically removed because you have posted logs to reddit. We'd prefer you to upload them to [pastebin link](pastebin.com).
+      Your post has been automatically removed because you have posted logs to reddit. We'd prefer you to upload them to [pastebin link](pastebin.com) or a similar site.
+      Please upload your logs and edit your post. Once complete, please send a modmail to let the mods know.
+      
+      The post is automatically placed in the modqueue and the mods will review it as well for false positives. 
 ---
   
 # 9 #automatic set flair to unsolved if no flair is detected
@@ -129,7 +132,7 @@ moderators_exempt: false
  
 # 11 #Moderator Posts
     title (regex): ["mod(erator)?([ -]?post)?s?", "announcements?", "admin(istrator)?s?"]
-    action: remove
+    action: filter
     action_reason: "Special Mod Words"
     comment: |
         Your post has been automatically removed because you used a keyword which is reserved for the subreddit moderators.

@@ -1,3 +1,4 @@
+---
 ###Mod Assist
 # 1 #Automatically remove anything that gets 3+ reports and send modmail
     reports: 3
@@ -14,44 +15,44 @@
 # 3 #Auto approved domains/links -Github
     domain: [github.com]
     action: approve
+---
  
 # 4 #Mod-Message reports items that could potentially relate to moderators.
----
     type: any
     title+body: ["moderator", "moderators", "mods", "mod","{{subreddit}}","r/{{subreddit}}"]
     modmail: "The [item]({{permalink}}) mentioned the moderators."
+---
 
 ###Help Assist
----
 # 5 #Post Logs
     type: comment
     body (full-exact): ["!Logs","!Logging"]
     comment: |
         Hi. OP please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
-
 ---
+
 # 6 #Post Download
     type: comment
     body (full-exact): ["!Download","!DownloadImp"]
     comment: |
         Hi. OP please review the following link: [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}.
- 
 ---
+
 ###Post Auto Replies
 # 7 #Docker Comment
     type: submission
     Title+body: "docker"
     Comment: |
-        You've mentioned Docker, be sure to [generate a docker-compose](https://old.reddit.com/r/usenet/wiki/docker#wiki_get_docker-compose) of all your docker images in a pastebin and link to it. Most Docker issues can be solved by understanding the wiki article for [these automation software and Docker](https://old.reddit.com/r/usenet/wiki/docker), which is all about user, group, ownership, permissions and paths.
- 
+        You've mentioned Docker, be sure to [generate a docker-compose](https://old.reddit.com/r/usenet/wiki/docker#wiki_get_docker-compose) of all your docker images in a pastebin and link to it. Most Docker issues can be solved by understanding the wiki article for [these automation software and Docker](https://old.reddit.com/r/usenet/wiki/docker), which is all about user, group, ownership, permissions and paths. 
 ---
+
 # 7.5 #Auto reply if "Downloads, Downloading, Download" is in the body or the title
 type: submission
 Title+body: ["Downloads", "Downloading", "Download"]
 comment: | 
     Hi. OP! It appears that you may be having issues with some aspect of downloading please review the following link. [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}.
-
 ---
+
 # 8 #Check if help post has logs
     type: submission
     flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
@@ -68,16 +69,17 @@ comment: |
     moderators_exempt: false
     comment_locked: true
     comment_stickied: true
- 
 ---
+
 #8.5 #check to see if logs are not posted to pastebin
-  type: parent_submission
+  type: submission
   body (includes): ["trace","info","warn"]
-  action: removed
+  action: remove
   action_reason: "Post includes log but not posted to pastebin"
   message_subject: "Post includes log but not posted to pastebin"
   message: |
       Your post has been automatically removed because you have posted logs to reddit. We'd prefer you to upload them to [pastebin link](pastebin.com).
+---
   
 # 9 #automatic set flair to unsolved if no flair is detected
 type: submission
@@ -135,9 +137,9 @@ moderators_exempt: false
         The above post by /u/{{author}}, with title "{{title}}" was removed because it contained a moderator-only keyword.
  
         Please investigate and make sure that this action was correct.
- 
-# Image Direct Links
 ---
+# Image Direct Links
+
 # 12 #
     domain: [gyazo.com, puu.sh, prntscr.com, postimg.org, pinterest.com, imageshack.us]
     ~url (ends-with): [.png, .jpg, .gif, .jpeg]
@@ -154,8 +156,8 @@ moderators_exempt: false
  
     action: remove
     action_reason: "Indirect Images"
-
 ---
+
 # 13 #
     domain: [imgur.com]
     url (regex): ["imgur\\.com/[A-Za-z0-9]{5,8}$"]
@@ -173,8 +175,8 @@ moderators_exempt: false
  
     action: remove
     action_reason: "Indirect Images"
-
 ---
+
 # 14 #
     domain: [imgur.com]
     url (regex): ["imgur\\.com/[A-Za-z0-9]{5,8},([A-Za-z0-9]{5,8},?)+", "gallery"]
@@ -188,8 +190,8 @@ moderators_exempt: false
         For multi-image links, please create an album and submit a link to that.
  
         For gallery images, please right-click your image, choose *Copy Image URL*, and submit that direct image link to reddit.
-
 ---
+
 # 15 #
     domain: [pinterest.com, snag.gy, uput.in, imgflip.com]
     ~url: [i.snag.gy, i.uput.in, i.imgflip.com]
@@ -199,8 +201,8 @@ moderators_exempt: false
         Your submission has been automatically removed due to an indirect link to a hosted image.
  
         Please right-click your image, choose *Copy Image URL*, and submit that direct image link to reddit.
-
 ---
+
 # 16 #
     domain: [tinypic.com]
     action: remove
@@ -209,3 +211,4 @@ moderators_exempt: false
         Your submission has been automatically removed due to an indirect link to a hosted image.
  
         Unfortunately, the media host {{domain}} is not compatible with mobile apps and/or RES. Please be considerate of mobile and RES users and resubmit your content using a different media host.
+---

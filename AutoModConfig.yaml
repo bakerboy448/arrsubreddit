@@ -70,6 +70,15 @@ comment: |
     comment_stickied: true
  
 ---
+#8.5 #check to see if logs are not posted to pastebin
+  type: parent_submission
+  body (includes): ["trace","info","warn"]
+  action: removed
+  action_reason: "Post includes log but not posted to pastebin"
+  message_subject: "Post includes log but not posted to pastebin"
+  message: |
+      Your post has been automatically removed because you have posted logs to reddit. We'd prefer you to upload them to [pastebin link](pastebin.com).
+  
 # 9 #automatic set flair to unsolved if no flair is detected
 type: submission
 ~flair_text (regex): ".+"

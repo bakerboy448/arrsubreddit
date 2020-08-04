@@ -34,7 +34,7 @@
     type: comment
     body (full-exact): ["!Download","!DownloadImp"]
     comment: |
-        Hi. OP please review the following link: [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}.
+        Hi. OP please review the following link and you'll probably get it all sorted out, but if not you'll also have useful trace logs and screenshots to show us. [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}.
  
 ---
 ###Post Auto Replies
@@ -42,15 +42,20 @@
     type: submission
     Title+body: "docker"
     Comment: |
-        You've mentioned Docker, be sure to [generate a docker-compose](https://old.reddit.com/r/usenet/wiki/docker#wiki_get_docker-compose) of all your docker images in a pastebin and link to it. Most Docker issues can be solved by understanding the wiki article for [these automation software and Docker](https://old.reddit.com/r/usenet/wiki/docker), which is all about user, group, ownership, permissions and paths.
+        You've mentioned Docker, be sure to [generate a docker-compose](https://old.reddit.com/r/usenet/wiki/docker#wiki_get_docker-compose) of all your docker images in a pastebin and link to it. 
+        
+        Most Docker issues can be solved by understanding the wiki article for [these automation software and Docker](https://old.reddit.com/r/usenet/wiki/docker), which is all about user, group, ownership, permissions and paths.
  
 ---
 # 7.5 #Auto reply if "Downloads, Downloading, Download" is in the body or the title
 type: submission
 Title+body: ["Downloads", "Downloading", "Download"]
 comment: | 
-    Hi. OP! It appears that you may be having issues with some aspect of downloading please review the following link. [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}.
-
+    Hi. OP! It appears that you may be having issues with some aspect of downloading please review the following link and you'll probably get it all sorted out, but if not you'll also have useful trace logs and screenshots to show us.
+    
+    [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}.
+    
+    Once your problem is solved, please reply to the answer(s) saying '!solved' in the thread.
 ---
 # 8 #Check if help post has logs
     type: submission

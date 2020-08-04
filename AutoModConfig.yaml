@@ -73,7 +73,7 @@ comment: |
 
 # 10 #check to see if logs are not posted to pastebin
   type: submission
-  body (includes): ["trace","info","warn"]
+  body (includes): ["|trace|","|info|","|warn|"]
   action: filter #filter to mod queue
   action_reason: "Post includes log but not posted to pastebin"
   message_subject: "Post includes log but not posted to pastebin"

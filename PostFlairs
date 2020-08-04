@@ -1,55 +1,36 @@
+e164b166-d373-11ea-ad55-0e35d0a576f3 #arrtest unsolved
 10fa17be-d224-11ea-ae8c-0e9f7c8cd055 #lidarr unsolved
-
-1fdabcd4-d224-11ea-9a41-0e3b8835c8d9 #lidarr waiting for op
-
-05ee0a10-d224-11ea-a771-0eab20f8a02f #lidarr solved
-
-3b5324c8-d26b-11ea-a121-0e23198cf239 #lidarr discussion
-
-47143310-d26b-11ea-b89e-0ef26b44f987 #lidarr idea
-
-5da53746-d26b-11ea-b090-0ea2a96cb36b #lidarr bug
-
-69475908-d26b-11ea-b99c-0e6bced69a05 #lidarr mod free text
-
 5189e338-6761-11e9-bf5a-0ecd7f396b08 #readarr unsolved
-
-f5051292-d26a-11ea-b9db-0e8c1df44fc9 #readarr waiting for op
-
-328cdbfe-d211-11ea-aa97-0e384ca82067 #readarr solved
-
-5c714d04-6761-11e9-aa46-0eda3efb8d04 #readarr discussion
-
-3d464f44-675f-11e9-b0fb-0e9ed37c1f98 #readarr idea
-
-02a54ea8-d26b-11ea-baa3-0e3c3c7d7419 #readarr bug
-
-7db79006-bc73-11e9-a982-0e2dce772aa2 #readarr mod free text
-
 602b8658-d21d-11ea-b3e4-0ee6a8b990e7 #sonarr unsolved
-
-81c10e00-d21d-11ea-8240-0e22260fda05 #sonarr waiting for op
-
-3ed6a744-d21d-11ea-b58f-0ed8dc567eeb #sonarr solved
-
-f8130630-d21d-11ea-afae-0e8376b80a3f #sonarr discussion
-
-095b2eea-d21e-11ea-9d32-0ece5bb9915b #sonarr idea
-
-17f86b8e-d21e-11ea-b691-0ea15706ab01 #sonarr bug
-
-6fe37d48-d269-11ea-879d-0e06787eb03b #sonarr mod free text
-
 245a69ae-d1bf-11ea-bfe5-0ec196655117 #radarr unsolved
 
+1fdabcd4-d224-11ea-9a41-0e3b8835c8d9 #lidarr waiting for op
+f5051292-d26a-11ea-b9db-0e8c1df44fc9 #readarr waiting for op
+81c10e00-d21d-11ea-8240-0e22260fda05 #sonarr waiting for op
 1df59368-d1c4-11ea-b464-0e0eff38b3b9 #radarr waiting for op
 
+16d2d504-d378-11ea-a0ae-0e7365d88ae9 #arrtest solved
+05ee0a10-d224-11ea-a771-0eab20f8a02f #lidarr solved
+328cdbfe-d211-11ea-aa97-0e384ca82067 #readarr solved
+3ed6a744-d21d-11ea-b58f-0ed8dc567eeb #sonarr solved
 72ec283a-dc3d-11e6-8918-0e7be260da34 #radarr solved
 
+3b5324c8-d26b-11ea-a121-0e23198cf239 #lidarr discussion
+5c714d04-6761-11e9-aa46-0eda3efb8d04 #readarr discussion
+f8130630-d21d-11ea-afae-0e8376b80a3f #sonarr discussion
 f43cb3da-d1c3-11ea-8b00-1212459757af #radarr discussion
 
+47143310-d26b-11ea-b89e-0ef26b44f987 #lidarr idea
+3d464f44-675f-11e9-b0fb-0e9ed37c1f98 #readarr idea
+095b2eea-d21e-11ea-9d32-0ece5bb9915b #sonarr idea
 e534a926-dc3d-11e6-a6ea-0e56226f15da #radarr idea
 
+5da53746-d26b-11ea-b090-0ea2a96cb36b #lidarr bug
+02a54ea8-d26b-11ea-baa3-0e3c3c7d7419 #readarr bug
+17f86b8e-d21e-11ea-b691-0ea15706ab01 #sonarr bug
 9a4c4940-dc3e-11e6-a98f-0e6dcfd1b1d8 #radarr bug
 
+69475908-d26b-11ea-b99c-0e6bced69a05 #lidarr mod free text
+7db79006-bc73-11e9-a982-0e2dce772aa2 #readarr mod free text
+6fe37d48-d269-11ea-879d-0e06787eb03b #sonarr mod free text
 c983bd9a-d269-11ea-9bbc-0eff3337d3c1 #radarr mod free text

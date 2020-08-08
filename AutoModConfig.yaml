@@ -69,11 +69,12 @@ comment: |
     ~body (includes): ["pastebin","drive.google.com","paste.ubuntu.com"]
     Comment: |
         It appears you are requesting assistance and did not provide any linked logs.  Please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
-        If you did include the logs directly in your post, please edit your post to remove them and provide the logs via a [pastebin link](pastebin.com) or similar site.
+        If you did include the logs directly in your post, please edit your post to remove them and provide the logs via a [pastebin link](https://pastebin.com) link or similar site.
         
         Once your problem is solved, please reply to the answer(s) saying '!solved' in the thread.
     moderators_exempt: false
     comment_locked: true
+    
 ---
 
 # 10 #check to see if logs are not posted to pastebin
@@ -83,7 +84,7 @@ comment: |
   action_reason: "Post includes log but not posted to pastebin"
   message_subject: "Post includes log but not posted to pastebin"
   message: |
-      Your post has been automatically removed because you have posted logs to reddit. We'd prefer you to upload them to [pastebin link](pastebin.com) or a similar site.
+      Your post has been automatically removed because you have posted logs to reddit. We'd prefer you to upload them to [pastebin link](https://pastebin.com) link or a similar site.
       Please upload your logs and edit your post. Once complete, please send a modmail to let the mods know.
       
       The post is automatically placed in the modqueue and the mods will review it as well for false positives. 

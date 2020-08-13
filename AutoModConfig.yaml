@@ -13,7 +13,7 @@
  
 ---
 # 3 #Auto approved domains/links 
-    domain: ["github.com","pastebin.com","paste.ubunut.com","drive.google.com"]
+    domain: ["github.com","pastebin.com","paste.ubuntu.com","drive.google.com"]
     action: approve
 ---
  

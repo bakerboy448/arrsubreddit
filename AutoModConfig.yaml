@@ -13,7 +13,7 @@
  
 ---
 # 3 #Auto approved domains/links 
-    domain: ["github.com","pastebin.com"]
+    domain: ["github.com","pastebin.com","paste.ubuntu.com","drive.google.com"]
     action: approve
 ---
  
@@ -29,13 +29,15 @@
     body (full-exact): ["!Logs","!Logging"]
     comment: |
         Hi. OP please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
+    moderators_exempt: false
 ---
 
 # 6 #Post Download
     type: comment
-    body (full-exact): ["!Download","!DownloadImp"]
+    body (full-exact): ["!Download","!DownloadImp","!downloads"]
     comment: |
         Hi. OP please review the following link and you'll probably get it all sorted out, but if not you'll also have useful trace logs and screenshots to show us. [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}.
+    moderators_exempt: false
 ---
 
 ###Post Auto Replies
@@ -64,25 +66,25 @@ comment: |
     #flair_template_id: 10fa17be-d224-11ea-ae8c-0e9f7c8cd055 #lidarr unsolved
     #flair_template_id: 602b8658-d21d-11ea-b3e4-0ee6a8b990e7 #sonarr unsolved
     #flair_template_id: 245a69ae-d1bf-11ea-bfe5-0ec196655117 #radarr unsolved
-    ~body (includes): ["pastebin"]
+    ~body (includes): ["pastebin","drive.google.com","paste.ubuntu.com"]
     Comment: |
         It appears you are requesting assistance and did not provide any linked logs.  Please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
-        If you did include the logs directly in your post, please edit your post to remove them and provide the logs via a [pastebin link](pastebin.com) or similar site.
+        If you did include the logs directly in your post, please edit your post to remove them and provide the logs via a [pastebin link](https://pastebin.com) link or similar site.
         
         Once your problem is solved, please reply to the answer(s) saying '!solved' in the thread.
     moderators_exempt: false
     comment_locked: true
-    comment_stickied: true
+    
 ---
 
 # 10 #check to see if logs are not posted to pastebin
   type: submission
-  body (includes): ["|trace|","|info|","|warn|"]
+  body (includes): ["|trace|","|info|","|warn|","NzbDrone."]
   action: filter #filter to mod queue
   action_reason: "Post includes log but not posted to pastebin"
   message_subject: "Post includes log but not posted to pastebin"
   message: |
-      Your post has been automatically removed because you have posted logs to reddit. We'd prefer you to upload them to [pastebin link](pastebin.com) or a similar site.
+      Your post has been automatically removed because you have posted logs to reddit. We'd prefer you to upload them to [pastebin link](https://pastebin.com) link or a similar site.
       Please upload your logs and edit your post. Once complete, please send a modmail to let the mods know.
       
       The post is automatically placed in the modqueue and the mods will review it as well for false positives. 
@@ -93,11 +95,11 @@ comment: |
 type: submission
 ~flair_text (regex): ".+"
 set_flair:
-  flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
-  #flair_template_id: 10fa17be-d224-11ea-ae8c-0e9f7c8cd055 #lidarr unsolved
-  #flair_template_id: 5189e338-6761-11e9-bf5a-0ecd7f396b08 #readarr unsolved
-  #flair_template_id: 602b8658-d21d-11ea-b3e4-0ee6a8b990e7 #sonarr unsolved
-  #flair_template_id: 245a69ae-d1bf-11ea-bfe5-0ec196655117 #radarr unsolved
+  template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
+  #template_id: 10fa17be-d224-11ea-ae8c-0e9f7c8cd055 #lidarr unsolved
+  #template_id: 5189e338-6761-11e9-bf5a-0ecd7f396b08 #readarr unsolved
+  #template_id: 602b8658-d21d-11ea-b3e4-0ee6a8b990e7 #sonarr unsolved
+  #template_id: 245a69ae-d1bf-11ea-bfe5-0ec196655117 #radarr unsolved
 comment: |
   Hi /u/{{author}} we weren't quite sure what type of post you were looking to make since you did not select a flair type.
   We went ahead and placed your post as an unsolved question. If this is not the case please make changes to correct this.
@@ -105,7 +107,7 @@ comment: |
   Once your problem is solved, please reply to the answer(s) saying '!solved' in the thread.  
 moderators_exempt: false
 comment_locked: true
-comment_stickied: true
+
 
 ---
 # 12 # - Switch to waiting on OP when someone else comments
@@ -143,11 +145,11 @@ comment_stickied: true
         #flair_template_id: 602b8658-d21d-11ea-b3e4-0ee6a8b990e7 #sonarr unsolved
         #flair_template_id: 245a69ae-d1bf-11ea-bfe5-0ec196655117 #radarr unsolved
         set_flair:
-            flair_template_id: 16d2d504-d378-11ea-a0ae-0e7365d88ae9 #arrmodtest solved
-            #flair_template_id: 05ee0a10-d224-11ea-a771-0eab20f8a02f #lidarr solved
-            #flair_template_id: 328cdbfe-d211-11ea-aa97-0e384ca82067 #readarr solved
-            #flair_template_id: 3ed6a744-d21d-11ea-b58f-0ed8dc567eeb #sonarr solved
-            #flair_template_id: 72ec283a-dc3d-11e6-8918-0e7be260da34 #radarr solved
+            template_id: 16d2d504-d378-11ea-a0ae-0e7365d88ae9 #arrmodtest solved
+            #template_id: 05ee0a10-d224-11ea-a771-0eab20f8a02f #lidarr solved
+            #template_id: 328cdbfe-d211-11ea-aa97-0e384ca82067 #readarr solved
+            #template_id: 3ed6a744-d21d-11ea-b58f-0ed8dc567eeb #sonarr solved
+            #template_id: 72ec283a-dc3d-11e6-8918-0e7be260da34 #radarr solved
         overwrite_flair: true
     comment: "Thank you/u/{{author}} I've gone ahead and marked your post as solved."
     moderators_exempt: false

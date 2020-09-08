@@ -1,22 +1,20 @@
----
-###Mod Assist
 # 1 #Automatically remove anything that gets 3+ reports and send modmail
     reports: 3
     action: remove
     comment: "Your {{kind}} has been removed because multiple users has reported it to the moderation team. This action is done automatically by a bot. The moderators will review this action."
     modmail: "The above {{kind}} by /u/{{author}} was automatically removed due to receiving 3+ reports. [Please investigate]({{permalink}})."
- 
+
 ---
 # 2 #Automatically notifies via modmail of 2 reports
     reports: 2
     modmail: "The above {{kind}} by /u/{{author}} has received 2 reports. [Please investigate]({{permalink}})."
- 
+
 ---
-# 3 #Auto approved domains/links 
+# 3 #Auto approved domains/links
     domain: ["github.com","pastebin.com","paste.ubuntu.com","drive.google.com"]
     action: approve
 ---
- 
+
 # 4 #Mod-Message reports items that could potentially relate to moderators.
     type: any
     title+body: ["moderator", "moderators", "mods", "mod","{{subreddit}}","r/{{subreddit}}"]
@@ -32,7 +30,7 @@
     moderators_exempt: false
 ---
 
-# 6 #Post Download
+# 6 #Post Automod Download
     type: comment
     body (full-exact): ["!Download","!DownloadImp","!downloads"]
     comment: |
@@ -45,21 +43,20 @@
     type: submission
     Title+body: "docker"
     Comment: |
-        You've mentioned Docker, be sure to [generate a docker-compose](https://old.reddit.com/r/usenet/wiki/docker#wiki_get_docker-compose) of all your docker images in a pastebin and link to it. Most Docker issues can be solved by understanding the wiki article for [these automation software and Docker](https://old.reddit.com/r/usenet/wiki/docker), which is all about user, group, ownership, permissions and paths. 
+        You've mentioned Docker, be sure to [generate a docker-compose](https://old.reddit.com/r/usenet/wiki/docker#wiki_get_docker-compose) of all your docker images in a pastebin and link to it. Most Docker issues can be solved by understanding the wiki article for [these automation software and Docker](https://old.reddit.com/r/usenet/wiki/docker), which is all about user, group, ownership, permissions and paths.
 ---
 
 # 8 #Auto reply if "Download* or Import*" is in the body or the title
-type: submission
-Title+body: ["Downloads", "Downloading", "Download", "import", "imported", "importing", "imports"]
-comment: | 
-    Hi. OP! It appears that you may be having issues with some aspect of downloading please review the following link and you'll probably get it all sorted out, but if not you'll also have useful trace logs and screenshots to show us.
-    
-    [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}.
-    
-    Once your problem is solved, please reply to the answer(s) saying '!solved' in the thread.
+#type: submission
+#Title+body: ["Downloads", "Downloading", "Download", "import", "imported", "importing", "imports"]
+#comment: |
+#    Hi. OP! It appears that you may be having issues with some aspect of downloading please review the following link and you'll probably get it all sorted out, but if not you'll also have useful trace logs and screenshots to show us.
+#
+#    [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}.
+#    Once your problem is solved, please reply to the answer(s) saying '!solved' in the thread.
 ---
 
-# 9 #Check if help post has logs
+# 9 #Check if unsolved1 post has logs if it doesn't have logs it will post a comment. Moderators are not exempt from this rule
     type: submission
     flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
     #flair_template_id: 5189e338-6761-11e9-bf5a-0ecd7f396b08 #readarr unsolved
@@ -70,80 +67,140 @@ comment: |
     Comment: |
         It appears you are requesting assistance and did not provide any linked logs.  Please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
         If you did include the logs directly in your post, please edit your post to remove them and provide the logs via a [pastebin link](https://pastebin.com) link or similar site.
-        
+
         Once your problem is solved, please reply to the answer(s) saying '!solved' in the thread.
     moderators_exempt: false
-    comment_locked: true
-    
 ---
 
-# 10 #check to see if logs are not posted to pastebin
+# 10 #check to see if logs are not posted to pastebin. Moderators are not exempt from this rule
   type: submission
-  body (includes): ["|trace|","|info|","|warn|","NzbDrone."]
+  body (includes): ["|trace|","|info|","|warn|","NzbDrone"]
   action: filter #filter to mod queue
   action_reason: "Post includes log but not posted to pastebin"
   message_subject: "Post includes log but not posted to pastebin"
   message: |
       Your post has been automatically removed because you have posted logs to reddit. We'd prefer you to upload them to [pastebin link](https://pastebin.com) link or a similar site.
       Please upload your logs and edit your post. Once complete, please send a modmail to let the mods know.
-      
-      The post is automatically placed in the modqueue and the mods will review it as well for false positives. 
   moderators_exempt: false
 ---
-  
-# 11 #automatic set flair to unsolved if no flair is detected
-type: submission
-~flair_text (regex): ".+"
-set_flair:
-  template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
-  #template_id: 10fa17be-d224-11ea-ae8c-0e9f7c8cd055 #lidarr unsolved
-  #template_id: 5189e338-6761-11e9-bf5a-0ecd7f396b08 #readarr unsolved
-  #template_id: 602b8658-d21d-11ea-b3e4-0ee6a8b990e7 #sonarr unsolved
-  #template_id: 245a69ae-d1bf-11ea-bfe5-0ec196655117 #radarr unsolved
-comment: |
-  Hi /u/{{author}} we weren't quite sure what type of post you were looking to make since you did not select a flair type.
-  We went ahead and placed your post as an unsolved question. If this is not the case please make changes to correct this.
-  If you are requesting assistance and did not provide any linked logs.  Please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
-  Once your problem is solved, please reply to the answer(s) saying '!solved' in the thread.  
-moderators_exempt: false
-comment_locked: true
+
+# 11 #Automatically set flair to unsolved1 if no flair is detected. Moderators are not exempt from this rule
+  type: submission
+  ~flair_text (regex): ".+"
+  set_flair:
+    template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
+    #template_id: 10fa17be-d224-11ea-ae8c-0e9f7c8cd055 #lidarr unsolved
+    #template_id: 5189e338-6761-11e9-bf5a-0ecd7f396b08 #readarr unsolved
+    #template_id: 602b8658-d21d-11ea-b3e4-0ee6a8b990e7 #sonarr unsolved
+    #template_id: 245a69ae-d1bf-11ea-bfe5-0ec196655117 #radarr unsolved
+  comment: |
+    Hi /u/{{author}} we weren't quite sure what type of post you were looking to make since you did not select a flair type.
+    We went ahead and placed your post as an `unsolved` question. If this is not the case please make changes to correct this.
+    If you are requesting assistance and did not provide any linked logs.  Please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
+    Once your problem is solved, please reply to the answer(s) saying '!solved' in the thread.
+  moderators_exempt: false
 
 
 ---
-# 12 # - Switch to waiting on OP when someone else comments
+# 12 # - Switch to waiting on OP when someone else comments on the post. Moderators are not exempt from this rule
     type: comment
     is_top_level: true            # Only trigger on top-level comments
     moderators_exempt: false
     author:
         is_submitter: false
         ~name: AutoModerator
-    action_reason: "Changed flair to unsolved again"
+    action_reason: "Changed flair to Waiting on OP"
     parent_submission:
-        flair_template_id: 164b166-d373-11ea-ad55-0e35d0a576f3 #arrtest unsolved
-        #flair_template_id: 10fa17be-d224-11ea-ae8c-0e9f7c8cd055 #lidarr unsolved
-        #flair_template_id: 5189e338-6761-11e9-bf5a-0ecd7f396b08 #readarr unsolved
-        #flair_template_id: 602b8658-d21d-11ea-b3e4-0ee6a8b990e7 #sonarr unsolved
-        #flair_template_id: 245a69ae-d1bf-11ea-bfe5-0ec196655117 #radarr unsolved
-        set_flair: 
-            flair_template_id: 6d8d867c-d5fe-11ea-9695-0ebade2e66c3 #arrtest waiting for op
-            #flair_template_id: 1fdabcd4-d224-11ea-9a41-0e3b8835c8d9 #lidarr waiting for op
-            #flair_template_id: f5051292-d26a-11ea-b9db-0e8c1df44fc9 #readarr waiting for op
-            #flair_template_id: 81c10e00-d21d-11ea-8240-0e22260fda05 #sonarr waiting for op
-            #flair_template_id: 1df59368-d1c4-11ea-b464-0e0eff38b3b9 #radarr waiting for op
+        flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrtest unsolved1
+        #flair_template_id: 10fa17be-d224-11ea-ae8c-0e9f7c8cd055 #lidarr unsolved1
+        #flair_template_id: 5189e338-6761-11e9-bf5a-0ecd7f396b08 #readarr unsolved1
+        #flair_template_id: 602b8658-d21d-11ea-b3e4-0ee6a8b990e7 #sonarr unsolved1
+        #flair_template_id: 245a69ae-d1bf-11ea-bfe5-0ec196655117 #radarr unsolved1
+        set_flair:
+            template_id: 6d8d867c-d5fe-11ea-9695-0ebade2e66c3 #arrtest waitingforop
+            #template_id: 1fdabcd4-d224-11ea-9a41-0e3b8835c8d9 #lidarr waitingforop
+            #template_id: f5051292-d26a-11ea-b9db-0e8c1df44fc9 #readarr waitingforop
+            #template_id: 81c10e00-d21d-11ea-8240-0e22260fda05 #sonarr waitingforop
+            #template_id: 1df59368-d1c4-11ea-b464-0e0eff38b3b9 #radarr waitingforop
         overwrite_flair: true
-
+    moderators_exempt: false
 ---
-# 13 #Solved Comment for help post
+#012a - Switch from waitingforop to 2, so exempt from Automod second scan. Moderators are not exempt from this rule
+    type: comment
+    is_top_level: false        # Should only activate for replies, not top levels
+    moderators_exempt: false
+    author:
+        is_submitter: true
+        ~name: AutoModerator
+    action_reason: "012a - Changed flair to Waiting"
+    parent_submission:
+        flair_template_id: 6d8d867c-d5fe-11ea-9695-0ebade2e66c3  #arrtest unsolved1
+        #flair_template_id: 6d8d867c-d5fe-11ea-9695-0ebade2e66c3 #insert Radarr waitingforop
+        #flair_template_id: 6d8d867c-d5fe-11ea-9695-0ebade2e66c3 #insert Sonarr waitingforop
+        #flair_template_id: 6d8d867c-d5fe-11ea-9695-0ebade2e66c3 #insert Lidarr waitingforop
+        #flair_template_id: 6d8d867c-d5fe-11ea-9695-0ebade2e66c3 #insert Readarr waitingforop
+        set_flair:
+            template_id: e2fbf1ca-f212-11ea-824e-0ebc475bce95 #arrmodtest unsolved2
+            #template_id: 4089bd4a-f222-11ea-b7c9-0e9247e81179 #Radarr unsolved2
+            #template_id: cbdecd4a-f222-11ea-b3d1-0e94f07d4ca #Sonarr unsolved2
+            #template_id: ab838504-f222-11ea-8df9-0eb6c4a5b63b #Lidarr unsolved2
+            #template_id: e4a35fd0-f222-11ea-8ea3-0ec00570fc51 #Readarr unsolved2
+        overwrite_flair: true
+    moderators_exempt: false
+---
+# 13a #Place flair to solved if original author posts !solved and flair is set to unsolved1
     type: comment
     body (includes): ["!solved"]
     author:
         is_submitter: true
     parent_submission:
-        flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
-        #flair_template_id: 5189e338-6761-11e9-bf5a-0ecd7f396b08 #readarr unsolved
-        #flair_template_id: 10fa17be-d224-11ea-ae8c-0e9f7c8cd055 #lidarr unsolved
-        #flair_template_id: 602b8658-d21d-11ea-b3e4-0ee6a8b990e7 #sonarr unsolved
-        #flair_template_id: 245a69ae-d1bf-11ea-bfe5-0ec196655117 #radarr unsolved
+        flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3  #arrtest unsolved
+        #flair_template_id:  #insert Radarr unsolved1
+        #flair_template_id:  #insert Sonarr unsolved1
+        #flair_template_id:  #insert Lidarr unsolved1
+        #flair_template_id:  #insert Readarr unsolved1
+        set_flair:
+            template_id: 16d2d504-d378-11ea-a0ae-0e7365d88ae9 #arrmodtest solved
+            #template_id: 05ee0a10-d224-11ea-a771-0eab20f8a02f #lidarr solved
+            #template_id: 328cdbfe-d211-11ea-aa97-0e384ca82067 #readarr solved
+            #template_id: 3ed6a744-d21d-11ea-b58f-0ed8dc567eeb #sonarr solved
+            #template_id: 72ec283a-dc3d-11e6-8918-0e7be260da34 #radarr solved
+        overwrite_flair: true
+    comment: "Thank you/u/{{author}} I've gone ahead and marked your post as solved."
+    moderators_exempt: false
+---
+# 13b #Place flair to solved if orginal author posts !solved and flair is set to waitingforop
+    type: comment
+    body (includes): ["!solved"]
+    author:
+        is_submitter: true
+    parent_submission:
+        flair_template_id: 6d8d867c-d5fe-11ea-9695-0ebade2e66c3  #arrtest waitingforop
+        #flair_template_id:  #insert Radarr waitingforop
+        #flair_template_id:  #insert Sonarr waitingforop
+        #flair_template_id:  #insert Lidarr waitingforop
+        #flair_template_id:  #insert Readarr waitingforop
+        set_flair:
+            template_id: 16d2d504-d378-11ea-a0ae-0e7365d88ae9 #arrmodtest solved
+            #template_id: 05ee0a10-d224-11ea-a771-0eab20f8a02f #lidarr solved
+            #template_id: 328cdbfe-d211-11ea-aa97-0e384ca82067 #readarr solved
+            #template_id: 3ed6a744-d21d-11ea-b58f-0ed8dc567eeb #sonarr solved
+            #template_id: 72ec283a-dc3d-11e6-8918-0e7be260da34 #radarr solved
+        overwrite_flair: true
+    comment: "Thank you/u/{{author}} I've gone ahead and marked your post as solved."
+    moderators_exempt: false
+---
+# 13c #Place flair to solved if origial author posts !solved and flair is set to unsolved2
+    type: comment
+    body (includes): ["!solved"]
+    author:
+        is_submitter: true
+    parent_submission:
+        flair_template_id: e2fbf1ca-f212-11ea-824e-0ebc475bce95  #arrtest unsolved2
+        #flair_template_id: 4089bd4a-f222-11ea-b7c9-0e9247e81179 #insert Radarr unsolved2
+        #flair_template_id: cbdecd4a-f222-11ea-b3d1-0e94f07d4ca #insert Sonarr unsolved2
+        #flair_template_id: ab838504-f222-11ea-8df9-0eb6c4a5b63b #insert Lidarr unsolved2
+        #flair_template_id: e4a35fd0-f222-11ea-8ea3-0ec00570fc51 #insert Readarr unsolved2
         set_flair:
             template_id: 16d2d504-d378-11ea-a0ae-0e7365d88ae9 #arrmodtest solved
             #template_id: 05ee0a10-d224-11ea-a771-0eab20f8a02f #lidarr solved
@@ -157,7 +214,7 @@ comment_locked: true
 # 14 # - RESERVED
 
 ### Posts Control
- 
+
 # 15 #Moderator Posts
 
     title (regex): ["mod(erator)?([ -]?post)?s?", "announcements?", "admin(istrator)?s?"]
@@ -167,7 +224,7 @@ comment_locked: true
         Your post has been automatically removed because you used a keyword which is reserved for the subreddit moderators.
     modmail: |
         The above post by /u/{{author}}, with title "{{title}}" was removed because it contained a moderator-only keyword.
- 
+
         Please investigate and make sure that this action was correct.
 ---
 # Image Direct Links
@@ -178,15 +235,15 @@ comment_locked: true
     ~url (ends-with): [.png, .jpg, .gif, .jpeg]
     comment: |
         Your submission has been automatically removed due to an indirect link to a hosted image.
- 
+
         Please be considerate of mobile and RES users, and resubmit your link with the proper file extension.
- 
+
         For your convenience, here is your submitted link with a .png file extension appended to the end. Please check that it works. If it does, retry your submission with this link:
- 
+
         {{url}}.png
- 
+
         If the above link does not work, right-click on your image, select *Copy Image URL*, and paste that into the reddit submission page instead.
- 
+
     action: remove
     action_reason: "Indirect Images"
 ---
@@ -196,16 +253,16 @@ comment_locked: true
     url (regex): ["imgur\\.com/[A-Za-z0-9]{5,8}$"]
     comment: |
         Your submission has been automatically removed due to an indirect link to a hosted image.
- 
+
         Please be considerate of mobile and RES users, and resubmit your post as a direct link.
- 
+
          For your convenience, here is your submitted link with .jpg and .gif file extensions appended to the end. Please see if one works, and re-try your submission with one of the following links:
- 
+
         * {{url}}.jpg
         * {{url}}.gif
- 
+
         If the above links do not work, right-click on your image, select *Copy Image URL*, and paste that into the reddit submission page.
- 
+
     action: remove
     action_reason: "Indirect Images"
 ---
@@ -218,11 +275,11 @@ comment_locked: true
     action_reason: "Indirect Images"
     comment: |
         Your submission has been automatically removed due to an indirect link to a hosted image.
- 
+
         Non-album multi-image links and imgur gallery links are not compatible with RES and mobile apps.
- 
+
         For multi-image links, please create an album and submit a link to that.
- 
+
         For gallery images, please right-click your image, choose *Copy Image URL*, and submit that direct image link to reddit.
 ---
 
@@ -233,7 +290,7 @@ comment_locked: true
     action_reason: "Indirect Images"
     comment: |
         Your submission has been automatically removed due to an indirect link to a hosted image.
- 
+
         Please right-click your image, choose *Copy Image URL*, and submit that direct image link to reddit.
 ---
 
@@ -244,6 +301,6 @@ comment_locked: true
     action_reason: "Indirect Images"
     comment: |
         Your submission has been automatically removed due to an indirect link to a hosted image.
- 
+
         Unfortunately, the media host {{domain}} is not compatible with mobile apps and/or RES. Please be considerate of mobile and RES users and resubmit your content using a different media host.
 ---

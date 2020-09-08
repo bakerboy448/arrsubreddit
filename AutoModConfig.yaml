@@ -123,7 +123,6 @@
             #template_id: 81c10e00-d21d-11ea-8240-0e22260fda05 #sonarr waitingforop
             #template_id: 1df59368-d1c4-11ea-b464-0e0eff38b3b9 #radarr waitingforop
         overwrite_flair: true
-    moderators_exempt: false
 ---
 #012a - Switch from waitingforop to 2, so exempt from Automod second scan. Moderators are not exempt from this rule
     type: comment
@@ -146,7 +145,6 @@
             #template_id: ab838504-f222-11ea-8df9-0eb6c4a5b63b #Lidarr unsolved2
             #template_id: e4a35fd0-f222-11ea-8ea3-0ec00570fc51 #Readarr unsolved2
         overwrite_flair: true
-    moderators_exempt: false
 ---
 # 13a #Place flair to solved if original author posts !solved and flair is set to unsolved1
     type: comment
@@ -176,10 +174,10 @@
         is_submitter: true
     parent_submission:
         flair_template_id: 6d8d867c-d5fe-11ea-9695-0ebade2e66c3  #arrtest waitingforop
-        #flair_template_id:  #insert Radarr waitingforop
-        #flair_template_id:  #insert Sonarr waitingforop
-        #flair_template_id:  #insert Lidarr waitingforop
-        #flair_template_id:  #insert Readarr waitingforop
+        #flair_template_id: 1df59368-d1c4-11ea-b464-0e0eff38b3b9 #insert Radarr waitingforop
+        #flair_template_id: 81c10e00-d21d-11ea-8240-0e22260fda05 #insert Sonarr waitingforop
+        #flair_template_id: 1fdabcd4-d224-11ea-9a41-0e3b8835c8d9 #insert Lidarr waitingforop
+        #flair_template_id: f5051292-d26a-11ea-b9db-0e8c1df44fc9 #insert Readarr waitingforop
         set_flair:
             template_id: 16d2d504-d378-11ea-a0ae-0e7365d88ae9 #arrmodtest solved
             #template_id: 05ee0a10-d224-11ea-a771-0eab20f8a02f #lidarr solved
@@ -197,10 +195,10 @@
         is_submitter: true
     parent_submission:
         flair_template_id: e2fbf1ca-f212-11ea-824e-0ebc475bce95  #arrtest unsolved2
-        #flair_template_id: 4089bd4a-f222-11ea-b7c9-0e9247e81179 #insert Radarr unsolved2
-        #flair_template_id: cbdecd4a-f222-11ea-b3d1-0e94f07d4ca #insert Sonarr unsolved2
-        #flair_template_id: ab838504-f222-11ea-8df9-0eb6c4a5b63b #insert Lidarr unsolved2
-        #flair_template_id: e4a35fd0-f222-11ea-8ea3-0ec00570fc51 #insert Readarr unsolved2
+        #flair_template_id: 4089bd4a-f222-11ea-b7c9-0e9247e81179 #Radarr unsolved2
+        #flair_template_id: cbdecd4a-f222-11ea-b3d1-0e94f07d4ca #Sonarr unsolved2
+        #flair_template_id: ab838504-f222-11ea-8df9-0eb6c4a5b63b #Lidarr unsolved2
+        #flair_template_id: e4a35fd0-f222-11ea-8ea3-0ec00570fc51 #Readarr unsolved2
         set_flair:
             template_id: 16d2d504-d378-11ea-a0ae-0e7365d88ae9 #arrmodtest solved
             #template_id: 05ee0a10-d224-11ea-a771-0eab20f8a02f #lidarr solved

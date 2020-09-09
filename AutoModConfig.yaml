@@ -1,3 +1,4 @@
+###Mod Assist
 # 1 #Automatically remove anything that gets 3+ reports and send modmail
     reports: 3
     action: remove
@@ -43,10 +44,10 @@
     type: submission
     Title+body: "docker"
     Comment: |
-        You've mentioned Docker, be sure to [generate a docker-compose](https://old.reddit.com/r/usenet/wiki/docker#wiki_get_docker-compose) of all your docker images in a pastebin and link to it. Most Docker issues can be solved by understanding the wiki article for [these automation software and Docker](https://old.reddit.com/r/usenet/wiki/docker), which is all about user, group, ownership, permissions and paths.
+        You've mentioned Docker, be sure to [generate a docker-compose](https://old.reddit.com/r/usenet/wiki/docker#wiki_get_docker-compose) of all your docker images in a pastebin and link to it. Most Docker issues can be solved by understanding [the wiki article for these automation software and Docker](https://old.reddit.com/r/usenet/wiki/docker), which is all about user, group, ownership, permissions and paths.
 ---
 
-# 8 #Auto reply if "Download* or Import*" is in the body or the title
+# 8 #Auto reply if "Download* or Import*" is in the body or the title (Disabled)
 #type: submission
 #Title+body: ["Downloads", "Downloading", "Download", "import", "imported", "importing", "imports"]
 #comment: |
@@ -66,7 +67,7 @@
     ~body (includes): ["pastebin","drive.google.com","paste.ubuntu.com"]
     Comment: |
         It appears you are requesting assistance and did not provide any linked logs.  Please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
-        If you did include the logs directly in your post, please edit your post to remove them and provide the logs via a [pastebin link](https://pastebin.com) link or similar site.
+        If you did include the logs directly in your post, please edit your post to remove them and provide the logs via a [pastebin](https://pastebin.com) or similar site.
 
         Once your problem is solved, please reply to the answer(s) saying '!solved' in the thread.
     moderators_exempt: false
@@ -79,7 +80,7 @@
   action_reason: "Post includes log but not posted to pastebin"
   message_subject: "Post includes log but not posted to pastebin"
   message: |
-      Your post has been automatically removed because you have posted logs to reddit. We'd prefer you to upload them to [pastebin link](https://pastebin.com) link or a similar site.
+      Your post has been automatically removed because you have posted logs to reddit. We'd prefer you to upload them to [pastebin](https://pastebin.com) or a similar site.
       Please upload your logs and edit your post. Once complete, please send a modmail to let the mods know.
   moderators_exempt: false
 ---
@@ -133,11 +134,11 @@
         ~name: AutoModerator
     action_reason: "012a - Changed flair to Waiting"
     parent_submission:
-        flair_template_id: 6d8d867c-d5fe-11ea-9695-0ebade2e66c3  #arrtest unsolved1
-        #flair_template_id: 6d8d867c-d5fe-11ea-9695-0ebade2e66c3 #Radarr waitingforop
-        #flair_template_id: 6d8d867c-d5fe-11ea-9695-0ebade2e66c3 #Sonarr waitingforop
-        #flair_template_id: 6d8d867c-d5fe-11ea-9695-0ebade2e66c3 #Lidarr waitingforop
-        #flair_template_id: 6d8d867c-d5fe-11ea-9695-0ebade2e66c3 #Readarr waitingforop
+        flair_template_id: 6d8d867c-d5fe-11ea-9695-0ebade2e66c3  #arrtest waitingforop
+        #flair_template_id: 1df59368-d1c4-11ea-b464-0e0eff38b3b9 #Radarr waitingforop
+        #flair_template_id: 81c10e00-d21d-11ea-8240-0e22260fda05 #Sonarr waitingforop
+        #flair_template_id: 1fdabcd4-d224-11ea-9a41-0e3b8835c8d9 #Lidarr waitingforop
+        #flair_template_id: f5051292-d26a-11ea-b9db-0e8c1df44fc9 #Readarr waitingforop
         set_flair:
             template_id: e2fbf1ca-f212-11ea-824e-0ebc475bce95 #arrmodtest unsolved2
             #template_id: 4089bd4a-f222-11ea-b7c9-0e9247e81179 #Radarr unsolved2
@@ -152,7 +153,7 @@
     author:
         is_submitter: true
     parent_submission:
-        flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3  #arrtest unsolved
+        flair_template_id: e164b166-d373-11ea-ad55-0e35d0a576f3  #arrtest unsolved1
         #flair_template_id: 245a69ae-d1bf-11ea-bfe5-0ec196655117 #Radarr unsolved1
         #flair_template_id: 602b8658-d21d-11ea-b3e4-0ee6a8b990e7 #Sonarr unsolved1
         #flair_template_id: 10fa17be-d224-11ea-ae8c-0e9f7c8cd055 #Lidarr unsolved1

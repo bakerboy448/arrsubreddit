@@ -25,7 +25,7 @@
 ###Help Assist
 # 5 #Post Logs
     type: comment
-    body (full-exact): ["!Logs","!Logging"]
+    body (includes): ["!Logs","!Logging"]
     comment: |
         Hi. OP please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
     moderators_exempt: false
@@ -33,7 +33,7 @@
 
 # 6 #Post Automod Download
     type: comment
-    body (full-exact): ["!Download","!DownloadImp","!downloads"]
+    body (includes): ["!Download","!DownloadImp","!Downloads","!Downloading"]
     comment: |
         Hi. OP please review the following link and you'll probably get it all sorted out, but if not you'll also have useful trace logs and screenshots to show us. [Downloading & Importing](https://github.com/Sonarr/Sonarr/wiki/Downloads-and-Importing) The link is for Sonarr, but the concepts apply for {{subreddit}}.
     moderators_exempt: false

@@ -86,20 +86,21 @@
 ---
 
 # 11 #Automatically set flair to unsolved1 if no flair is detected. Moderators are not exempt from this rule
-  type: submission
-  ~flair_text (regex): ".+"
-  set_flair:
-    template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
-    #template_id: 10fa17be-d224-11ea-ae8c-0e9f7c8cd055 #lidarr unsolved
-    #template_id: 5189e338-6761-11e9-bf5a-0ecd7f396b08 #readarr unsolved
-    #template_id: 602b8658-d21d-11ea-b3e4-0ee6a8b990e7 #sonarr unsolved
-    #template_id: 245a69ae-d1bf-11ea-bfe5-0ec196655117 #radarr unsolved
-  comment: |
-    Hi /u/{{author}} we weren't quite sure what type of post you were looking to make since you did not select a flair type.
-    We went ahead and placed your post as an `unsolved` question. If this is not the case please make changes to correct this.
-    If you are requesting assistance and did not provide any linked logs.  Please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
-    Once your problem is solved, please reply to the answer(s) saying '!solved' in the thread.
-  moderators_exempt: false
+### Disabled 2020-09-29; replaced by AssistantBOT
+#  type: submission
+#  ~flair_text (regex): ".+"
+#  set_flair:
+#    template_id: e164b166-d373-11ea-ad55-0e35d0a576f3 #arrmodtest unsolved
+#    #template_id: 10fa17be-d224-11ea-ae8c-0e9f7c8cd055 #lidarr unsolved
+#    #template_id: 5189e338-6761-11e9-bf5a-0ecd7f396b08 #readarr unsolved
+#    #template_id: 602b8658-d21d-11ea-b3e4-0ee6a8b990e7 #sonarr unsolved
+#    #template_id: 245a69ae-d1bf-11ea-bfe5-0ec196655117 #radarr unsolved
+#  comment: |
+#    Hi /u/{{author}} we weren't quite sure what type of post you were looking to make since you did not select a flair type.
+#    We went ahead and placed your post as an `unsolved` question. If this is not the case please make changes to correct this.
+#    If you are requesting assistance and did not provide any linked logs.  Please review the following link. [Gathering Logs](https://github.com/Sonarr/Sonarr/wiki/Logging-and-Log-Files#sharing-logs) The link is for Sonarr, but the concepts apply for {{subreddit}}.
+#    Once your problem is solved, please reply to the answer(s) saying '!solved' in the thread.
+#  moderators_exempt: false
 
 
 ---
